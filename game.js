@@ -1,4 +1,6 @@
 
+//https://spicyyoghurt.com/tutorials/downloads/game-of-life/game-of-life-spicy-yoghurt.html
+
 class Game{
 
 
@@ -6,41 +8,44 @@ class Game{
     }
 
     setupGame(){
+        noStroke();
+        ellipseMode(CORNER)
     }
 
     drawGame(){
+        clear();
         worldGame.gameLoop()
     }
 }
 
 class Cell{
 
-    static width = 10;
-    static height = 10;
-
     constructor(x_pos , y_pos){
         
         this.x_pos = x_pos;
         this.y_pos = y_pos;
+        this.diam = 20;
 
         this.alive = Math.floor(Math.random() * 2);
     }
 
     draw(){
-        if(this.alive) fill('#A000A0');
-        else           fill('#FFF');
+        if(this.alive) fill('#F0F');
+        else           fill('#CCC');
 
-        circle(this.x_pos * Cell.width, this.y_pos * Cell.height, Cell.width);
+        circle(this.x_pos * this.diam, this.y_pos * this.diam, this.diam);
     }
 }
 
 
 class GameWorld {
 
-    static numColumns = 100;
+    static numColumns = 50;
     static numRows = 100;
 
     constructor() {
+
+        
         this.gameObjects = [];
         this.createGrid();
     }
@@ -53,8 +58,7 @@ class GameWorld {
         }
     }
 
-    isAlive(x, y)
-    {
+    isAlive(x, y){
         if (x < 0 || x >= GameWorld.numColumns || y < 0 || y >= GameWorld.numRows){
             return false;
         }
@@ -66,8 +70,7 @@ class GameWorld {
         return x + (y * GameWorld.numColumns);
     }
 
-    checkSurrounding ()
-    {
+    checkSurrounding (){
         // Loop over all cells
         for (let x = 0; x < GameWorld.numColumns; x++) {
             for (let y = 0; y < GameWorld.numRows; y++) {
@@ -99,9 +102,6 @@ class GameWorld {
         // Check the surrounding of each cell
         this.checkSurrounding();
 
-        // Clear the screen
-        
-        clear();
         // Draw all the gameobjects
         for (let i = 0; i < this.gameObjects.length; i++) {
             this.gameObjects[i].draw();

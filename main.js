@@ -5,24 +5,21 @@ function preload() {
 }
 
 function setup() {
+
   createCanvas(1000, 1000);
-  noStroke();
-  ellipseMode(CORNER)
+  game.setupGame();
+
 }
 
 function draw() {
-  clear();
   game.drawGame();  
 
-  //worldGame.gameLoop()
 }
 
-// function keyPressed() {
-//   if (keyCode === 32) {
-//   }
-// }
+function keyPressed() {
+  if (keyCode === 32) worldGame.createGrid();
+}
 
-// function mouseWheel(event) {
-//   game.squareSize += event.delta;
-//   //return false;
-// }
+function mouseWheel(event) {
+  game.squareSize += event.delta;
+}
