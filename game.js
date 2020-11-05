@@ -1,66 +1,54 @@
 class Game{
 
+    static numColums = 10;
+    static numRows = 10;
+
     constructor(){
-        this.squareSize = 20;
+        this.gameObjects = [];
+        this.createGrid();
+    }
+
+    createGrid(){
+        for(let i = 0 ; i < Game.numColums ; i++){
+            for(let j = 0 ; j < Game.numRows ; j++){
+                this.gameObjects.push(new Cell(this.context, i, j));
+            }
         }
+    }
 
     preloadGame(){
-
     }
 
     setupGame(){
-
-        // this.background = new Background(this.backgroundImages);
-        // this.player = new Player(this.playerImage);
-        // this.obstacles = [];
-        
     }
 
     drawGame(){
-
-    }
-
-    drawGrid(){
-        background(0);
-        stroke(100);
-        for(let i = 0 ; i < width ; i += this.squareSize){
-            for(let j = 0 ; j < height ; j+=this.squareSize){
-                fill(255);
-                rect(i, j, this.squareSize, this.squareSize);
-            }
-        }
-        // for(let i = 0 ; i <= width ; i+= this.squareSize)    line(i,0,i,height);
-        // for(let j = 0 ; j <= height ; j+=this.squareSize)    line(0,j,width,j);
-            
-    }
-
-    test(){            
-        rect(mouseX,mouseY,100,100);
+        
     }
 
 }
 
-class Cells{
+class Cell{
 
-    constructor(cellsWidth, cellsHeight){
-        this.width = cellsWidth;
-        this.height = cellsHeight;
-        this.array = [];
+    static width = 10;
+    static height = 10;
+
+    constructor(context, x_pos , y_pos){
+        this.context = context;
+        
+        this.x_pos = x_pos;
+        this.y_pos = y_pos;
+
+        this.alive = Math.floor(Math.random() * 2);
     }
 
-    make2DArray(columns, rows){
-        array = new Array(columns);
-        for(let i = 0; i < arrayMaked.length ; i++){
-            arrayMaked[i] = new Array(rows);
-        }
+    draw(){
+        // if(this.alive) this.context.fillStyle = '#ff8080';
+        // else    '#303030';
 
-    }
-
-    arrayFill(){
-        for(let i = 0 ; i < this.width ; i++){
-            for(let j = 0 ; j < this.height ; j++){
-                this.array[i][j] = Math.floor(Math.random(10));
-            }
-        }
+        // this.context.fillRect(this.x_pos * Cell.width, this.y_pos * Cell.height, Cell.width, Cell.height)
+        
+        fill('#ff8080');
+        ellipse(this.x_pos , this.y_pos , Cell.width, Cell.height);
     }
 }

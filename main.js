@@ -1,19 +1,22 @@
   
- let game = new Game();
- let cells = new Cells(10,10);
+ let game = new Game(500,500);
+ let cell = new Cell(this.context, 10, 10);
 
 function preload() {
-  cells.arrayFill();
+  console.log(cell);
 }
 
 function setup() {
   createCanvas(800, 800);
+  noStroke();
   //game.setupGame();
 }
 
 function draw() {
   clear();
-  game.drawGrid();  
+  cell.draw();
+
+  //game.drawGrid();  
   // game.drawCell();
 }
 
