@@ -1,23 +1,20 @@
-  
- let game = new Game(500,500);
- let cell = new Cell(this.context, 10, 10);
+let game = new Game();
+let worldGame = new GameWorld();
 
 function preload() {
-  console.log(cell);
 }
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1000, 1000);
   noStroke();
-  //game.setupGame();
+  ellipseMode(CORNER)
 }
 
 function draw() {
   clear();
-  cell.draw();
+  game.drawGame();  
 
-  //game.drawGrid();  
-  // game.drawCell();
+  //worldGame.gameLoop()
 }
 
 // function keyPressed() {
