@@ -1,12 +1,13 @@
   
  let game = new Game();
+ let cells = new Cells(10,10);
 
 function preload() {
-  //game.preloadGame();
+  cells.arrayFill();
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(800, 800);
   //game.setupGame();
 }
 
@@ -14,8 +15,6 @@ function draw() {
   clear();
   game.drawGrid();  
   // game.drawCell();
-
-  //game.test();
 }
 
 // function keyPressed() {
