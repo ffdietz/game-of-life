@@ -1,19 +1,21 @@
 let systemWidth = 1500;
-let systemHeight = 800;
+let systemHeight = 900;
 let resolution = 20;
 
 let game = new Game();
-let system = new System(systemWidth,systemHeight, resolution);
+let system = new System(systemHeight,systemHeight, resolution);
 
 function setup() {
-  createCanvas(systemWidth-resolution, systemHeight-resolution);  
-  //frameRate(1);
+  createCanvas(systemHeight, systemHeight);
   game.setupGame();
 }
 
 
 function draw() {
   if(frameCount % system.velocity === 0)    game.drawGame();
+
+  system.addLive(mouseX, mouseY);
+
   //game.canvasCheck();
 
 }

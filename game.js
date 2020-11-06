@@ -4,7 +4,7 @@
 class Game{
 
     setupGame(){
-        //ellipseMode(CORNER)
+        ellipseMode(CORNER)
         noStroke();
     }
 
@@ -69,10 +69,11 @@ class System {
     isAlive(x, y){ 
 
         if (x < 0 || x >= this.numColumns || y < 0 || y >= this.numRows){
-            return true;
+            return false;
         } 
 
-        return this.gameObjects[this.gridToIndex(x, y)].alive?1:0;
+        if(this.gameObjects[this.gridToIndex(x, y)].alive) return 1
+        else return 0
     }
 
     gridToIndex(x, y){
@@ -108,11 +109,17 @@ class System {
     }
     
     restart(x_pos, y_pos){
-    for (let x = 0; x < this.numColumns; x++) {
-        for (let y = 0; y < this.numRows; y++) {
-        this.gameObjects[this.gridToIndex(x, y)].alive = Math.floor(Math.random() * 2);
+    for (let x = 0; x < 20; x++) {
+        for (let y = 0; y < 20; y++) {
+            this.gameObjects[this.gridToIndex(x,y)].alive = 1;
+            }
         }
-     }
+    }
+
+    addLive(x_pos, y_pos){
+
+        console.log( this.gridToIndex(0,2) );
+        
     }
 
     gameLoop() {
