@@ -86,19 +86,19 @@ class System {
             for (let y = 0; y < this.numRows; y++) {
 
                 // Count the nearby population
-                let numAlive = this.isAlive(x - 1, y - 1) + this.isAlive(x, y - 1) + this.isAlive(x + 1, y - 1) + this.isAlive(x - 1, y) + this.isAlive(x + 1, y) + this.isAlive(x - 1, y + 1) + this.isAlive(x, y + 1) + this.isAlive(x + 1, y + 1);
+                let numAlive =  this.isAlive(x - 1, y - 1) + this.isAlive(x, y - 1) + this.isAlive(x + 1, y - 1) + 
+                                this.isAlive(x - 1, y) + this.isAlive(x + 1, y) + 
+                                this.isAlive(x - 1, y + 1) + this.isAlive(x, y + 1) + this.isAlive(x + 1, y + 1);
+
                 let centerIndex = this.gridToIndex(x, y);
 
-                if (numAlive === 2){
-                    // Do nothing
-                    this.gameObjects[centerIndex].nextAlive = this.gameObjects[centerIndex].alive;
-                }else if (numAlive === 3){
-                    // Make alive
-                    this.gameObjects[centerIndex].nextAlive = true;
-                }else{
-                    // Make dead
-                    this.gameObjects[centerIndex].nextAlive = false;
-                }
+                
+                if (numAlive === 2)      this.gameObjects[centerIndex].nextAlive = this.gameObjects[centerIndex].alive;
+
+                else if (numAlive === 3) this.gameObjects[centerIndex].nextAlive = true;
+
+                else                     this.gameObjects[centerIndex].nextAlive = false;
+            
             }
         }
 
@@ -109,9 +109,9 @@ class System {
     }
     
     restart(x_pos, y_pos){
-    for (let x = 0; x < 20; x++) {
-        for (let y = 0; y < 20; y++) {
-            this.gameObjects[this.gridToIndex(x,y)].alive = 1;
+    for (let x = 0; x < this.numColumns; x++) {
+        for (let y = 0; y < this.numRows; y++) {
+            this.gameObjects[this.gridToIndex(x,y)].alive = Math.floor(Math.random() * 2);
             }
         }
     }

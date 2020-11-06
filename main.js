@@ -1,6 +1,6 @@
 let systemWidth = 1500;
 let systemHeight = 900;
-let resolution = 20;
+let resolution = 10;
 
 let game = new Game();
 let system = new System(systemHeight,systemHeight, resolution);
