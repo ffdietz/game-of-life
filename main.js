@@ -1,21 +1,37 @@
+let systemWidth = 1500;
+let systemHeight = 600;
+let resolution = 10;
+
 let game = new Game();
-let worldGame = new GameWorld(80,100, 100);
+let system = new System(systemWidth,systemHeight, resolution);
 
 function setup() {
-  createCanvas(windowWidth-50, windowHeight-50);  
+  createCanvas(systemWidth, systemHeight);  
   //frameRate(1);
   game.setupGame();
 }
 
 
 function draw() {
-  game.drawGame();
+  if(frameCount % system.velocity === 0)    game.drawGame();
   //game.canvasCheck();
 
 }
 
 function keyPressed() {
-  if (keyCode === 32) worldGame.restart();
+  switch(keyCode){
+    case 32:  system.pause = !system.pause; //  SPACEBAR
+    break;
+
+    case 90:  system.restart();             //  Z  
+    break;
+
+    case 37:  system.velocity--;            //LEFT ARROW
+    break;
+
+    case 39:  system.velocity++;            //RIGHT ARROW
+    break;
+  } 
 }
 
 function mouseWheel(event) {

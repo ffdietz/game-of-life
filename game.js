@@ -5,11 +5,12 @@ class Game{
 
     setupGame(){
         ellipseMode(CORNER)
+        noStroke();
     }
 
     drawGame(){
-        noStroke();
-        worldGame.gameLoop()
+        system.velocity = constrain(system.velocity, 1, 10);
+        system.gameLoop()
     }
 
     canvasCheck(){
@@ -41,16 +42,20 @@ class Cell{
 }
 
 
-class GameWorld {
+class System {
 
     constructor( numColumns, numRows, resolution) {   
         this. resolution = resolution;
 
-        this.numColumns =  numColumns;
-        this.numRows = numRows;
+        this.numColumns =  numColumns /  this. resolution;
+        this.numRows = numRows /  this. resolution;
 
         this.gameObjects = [];
         this.createGrid();
+
+        //CONTROL VARIABLES
+        this.pause = true;
+        this.velocity = 1;
     }
 
     createGrid(){
@@ -63,15 +68,9 @@ class GameWorld {
 
     isAlive(x, y){ 
 
-        if( x < 0) x = this.numColumns;
-        if( x >= this.numColumns) x = 0;
-        
-        if( y< 0) y = this.numRows;
-        if( y >= this.numColumns) y = 0;
-
         if (x < 0 || x >= this.numColumns || y < 0 || y >= this.numRows){
-            return false;
-        }
+            return true;
+        } 
 
         return this.gameObjects[this.gridToIndex(x, y)].alive?1:0;
     }
@@ -119,7 +118,8 @@ class GameWorld {
     gameLoop() {
 
         background('#505');
-        this.checkSurrounding();
+
+        if(this.pause) this.checkSurrounding();
 
         for (let i = 0; i < this.gameObjects.length; i++) {
             this.gameObjects[i].draw();
