@@ -4,7 +4,7 @@
 class Game{
 
     setupGame(){
-        //ellipseMode(CORNER)
+        ellipseMode(CORNER)
     }
 
     drawGame(){
@@ -63,6 +63,11 @@ class GameWorld {
 
     isAlive(x, y){ 
 
+        if( x < 0) x = this.numColumns;
+        if( x >= this.numColumns) x = 0;
+        
+        if( y< 0) y = this.numRows;
+        if( y >= this.numColumns) y = 0;
 
         if (x < 0 || x >= this.numColumns || y < 0 || y >= this.numRows){
             return false;

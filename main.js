@@ -1,8 +1,9 @@
 let game = new Game();
-let worldGame = new GameWorld(90,90, 10);
+let worldGame = new GameWorld(80,100, 100);
 
 function setup() {
-  createCanvas(800, 800);  
+  createCanvas(windowWidth-50, windowHeight-50);  
+  //frameRate(1);
   game.setupGame();
 }
 
