@@ -1,23 +1,20 @@
 let game = new Game();
-let worldGame = new GameWorld();
-
-function preload() {
-}
+let worldGame = new GameWorld(90,90, 10);
 
 function setup() {
-
-  createCanvas(1000, 1000);
+  createCanvas(800, 800);  
   game.setupGame();
-
 }
 
+
 function draw() {
-  game.drawGame();  
+  game.drawGame();
+  //game.canvasCheck();
 
 }
 
 function keyPressed() {
-  if (keyCode === 32) worldGame.createGrid();
+  if (keyCode === 32) worldGame.restart();
 }
 
 function mouseWheel(event) {
