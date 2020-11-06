@@ -1,12 +1,12 @@
 let systemWidth = 1500;
-let systemHeight = 600;
-let resolution = 10;
+let systemHeight = 800;
+let resolution = 20;
 
 let game = new Game();
 let system = new System(systemWidth,systemHeight, resolution);
 
 function setup() {
-  createCanvas(systemWidth, systemHeight);  
+  createCanvas(systemWidth-resolution, systemHeight-resolution);  
   //frameRate(1);
   game.setupGame();
 }

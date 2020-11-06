@@ -4,12 +4,12 @@
 class Game{
 
     setupGame(){
-        ellipseMode(CORNER)
+        //ellipseMode(CORNER)
         noStroke();
     }
 
     drawGame(){
-        system.velocity = constrain(system.velocity, 1, 10);
+        system.velocity = constrain(system.velocity, 1, 30);
         system.gameLoop()
     }
 
@@ -34,7 +34,7 @@ class Cell{
 
     draw(){
         if(this.alive) fill('#505');
-        else           fill('#EEE');
+        else           fill('#FFF');
 
         circle(this.x_pos * this.diam, this.y_pos * this.diam, this.diam);
         //square(this.x_pos * this.diam, this.y_pos * this.diam, this.diam);
