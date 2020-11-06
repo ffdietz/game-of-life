@@ -1,4 +1,5 @@
 
+//BASED ON
 //https://spicyyoghurt.com/tutorials/downloads/game-of-life/game-of-life-spicy-yoghurt.html
 
 class Game{
